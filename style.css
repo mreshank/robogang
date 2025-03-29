@@ -1,3 +1,29 @@
+/* 
+ * Hey Dreamers! 👋
+ * This is a clean and optimized CSS file for the RoboFriends user directory.
+ * I've organized it into clear sections with comments for better readability.
+ * Each section is marked with a comment line for your easy navigation.
+ * Feel free to explore and modify as needed!
+ * Plus, dont just copy paste this and say done, try to understand the code and make it your own.
+ * Also, I've added a few animations and transitions to make the site more interactive, you can skip that part if you want.
+ */
+
+/* ~~~~~~~~~~~~~~ CSS Variables ~~~~~~~~~~~~~~ */
+:root {
+    --primary-gradient: linear-gradient(135deg, #6366f1, #4f46e5);
+    --primary-color: #4f46e5;
+    --primary-light: #818cf8;
+    --primary-dark: #4338ca;
+    --text-light: #f8fafc;
+    --text-dark: #1e293b;
+    --bg-light: #f1f5f9;
+    --bg-white: #ffffff;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ~~~~~~~~~~~~~~ Reset & Base Styles ~~~~~~~~~~~~~~ */
 * {
     margin: 0;
     padding: 0;
@@ -6,8 +32,8 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f0f2f5;
-    color: #333;
+    background: var(--bg-light);
+    color: var(--text-dark);
     line-height: 1.6;
 }
 
@@ -17,35 +43,30 @@ body {
     padding: 2rem;
 }
 
+/* ~~~~~~~~~~~~~~ Header Styles ~~~~~~~~~~~~~~ */
 header {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(255, 255, 255, 0.98);
+    background: var(--primary-gradient);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     padding: 1.5rem 0;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-lg);
     margin-bottom: 2rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-header .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-}
-
-h1 {
-    color: #2c3e50;
+header h1 {
+    color: var(--text-light);
     font-size: 2.5rem;
     font-weight: 700;
     letter-spacing: -0.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
-    margin: 0;
+    margin-bottom: 1.5rem;
 }
 
+/* ~~~~~~~~~~~~~~ Search Bar Styles ~~~~~~~~~~~~~~ */
 .search-container {
     position: relative;
     max-width: 500px;
@@ -58,27 +79,28 @@ h1 {
     left: 1.25rem;
     top: 50%;
     transform: translateY(-50%);
-    color: #666;
+    color: var(--primary-color);
     font-size: 1.1rem;
 }
 
 #searchInput {
     width: 100%;
     padding: 1.1rem 1.1rem 1.1rem 3.5rem;
-    border: 2px solid #e0e0e0;
+    border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 30px;
     font-size: 1rem;
     transition: all 0.3s ease;
-    background: rgba(255, 255, 255, 0.9);
+    background: var(--bg-white);
+    color: var(--text-dark);
 }
 
 #searchInput:focus {
     outline: none;
-    border-color: #3498db;
-    box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.15);
-    background: white;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15);
 }
 
+/* ~~~~~~~~~~~~~~ User Cards Grid ~~~~~~~~~~~~~~ */
 #userMatrix {
     display: flex;
     flex-wrap: wrap;
@@ -86,26 +108,28 @@ h1 {
     justify-content: center;
 }
 
+/* ~~~~~~~~~~~~~~ User Card Styles ~~~~~~~~~~~~~~ */
 .user-card {
     flex: 1 1 300px;
     max-width: 350px;
-    background: white;
+    background: var(--bg-white);
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-md);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(79, 70, 229, 0.1);
 }
 
 .user-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-lg);
 }
 
 .user-image {
     width: 100%;
     height: 200px;
     object-fit: cover;
-    background: #f8f9fa;
+    background: var(--bg-light);
 }
 
 .user-info {
@@ -114,24 +138,70 @@ h1 {
 
 .user-name {
     font-size: 1.5rem;
-    color: #2c3e50;
+    color: var(--text-dark);
     margin-bottom: 0.5rem;
+    font-weight: 600;
 }
 
 .user-details {
-    color: #666;
+    color: var(--text-dark);
     font-size: 0.9rem;
 }
 
 .user-details p {
     margin: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .user-details i {
     width: 20px;
-    color: #3498db;
+    color: var(--primary-color);
 }
 
+/* ~~~~~~~~~~~~~~ Loading & No Results States ~~~~~~~~~~~~~~ */
+#userLoader, .no-results {
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    background: var(--bg-white);
+    border-radius: 15px;
+    box-shadow: var(--shadow-md);
+    margin: 2rem auto;
+    max-width: 500px;
+    text-align: center;
+}
+
+#userLoader::after {
+    content: '';
+    width: 50px;
+    height: 50px;
+    border: 4px solid var(--bg-light);
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-top: 1rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.no-results i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/* ~~~~~~~~~~~~~~ Responsive Design ~~~~~~~~~~~~~~ */
 @media (max-width: 768px) {
     .container {
         padding: 1rem;
@@ -149,4 +219,10 @@ h1 {
         flex: 1 1 250px;
         max-width: 100%;
     }
-} 
+
+    #userLoader, .no-results {
+        min-height: 300px;
+        margin: 1rem auto;
+    }
+}
+
